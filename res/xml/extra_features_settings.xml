@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: Evolution X
+     SPDX-License-Identifier: Apache-2.0 -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/extra_features_title">
+
+    <Preference
+        android:key="extra_features_routines"
+        android:title="@string/routines"
+        android:summary="@string/routines_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="org.evolution.settings.fragments.routines.RoutinesActivity" />
+    </Preference>
+
+    <Preference
+        android:key="extra_features_tproxy"
+        android:title="@string/net_profiles_title"
+        android:summary="@string/net_profiles_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="com.android.settings.network.profiles.NetworkProfilesActivity" />
+    </Preference>
+
+    <Preference
+        android:key="extra_features_kernel_manager"
+        android:title="@string/kernel_manager_title"
+        android:summary="@string/kernel_manager_summary"
+        settings:controller="org.evolution.settings.fragments.miscellaneous.KernelManagerPreferenceController"
+        android:fragment="org.evolution.settings.fragments.miscellaneous.KernelManagerSettings" />
+
+    <Preference
+        android:key="extra_features_clipboard_sync"
+        android:title="@string/clipboard_sync_title"
+        android:summary="@string/clipboard_sync_summary"
+        android:fragment="org.evolution.settings.clipp.ClippSettings" />
+
+    <Preference
+        android:key="extra_features_sensor_block"
+        android:title="@string/sensor_block_screen_title"
+        android:summary="@string/sensor_block_screen_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="org.evolution.settings.sensorblock.SensorBlockActivity" />
+    </Preference>
+
+    <Preference
+        android:key="extra_features_clipboard_access"
+        android:title="@string/clipboard_access_title"
+        android:summary="@string/clipboard_access_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="org.evolution.settings.clipboardaccess.ClipboardAccessActivity" />
+    </Preference>
+
+    <Preference
+        android:key="extra_features_hide_app_list"
+        android:title="@string/hide_app_list_screen_title"
+        android:summary="@string/hide_app_list_screen_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="org.evolution.settings.hideapps.HideAppsActivity" />
+    </Preference>
+
+    <Preference
+        android:key="extra_features_component_manager"
+        android:title="@string/component_manager_screen_title"
+        android:summary="@string/component_manager_screen_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="org.evolution.settings.componentmanager.MainActivity" />
+    </Preference>
+</PreferenceScreen>

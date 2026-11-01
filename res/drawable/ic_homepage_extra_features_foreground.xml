@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: Evolution X
+     SPDX-License-Identifier: Apache-2.0 -->
+<com.android.settings.widget.TintDrawable
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_extra_features"
+    android:tint="@color/homepage_apps_foreground" />
