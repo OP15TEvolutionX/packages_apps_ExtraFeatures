@@ -4,4 +4,9 @@
 <resources>
     <string name="extra_features_title">Дополнительно</string>
     <string name="extra_features_summary">Дополнительные функции системы</string>
+    <string name="extra_features_search">Поиск приложений</string>
+    <string name="extra_features_clear_search">Очистить поиск</string>
+    <string name="extra_features_only_selected">Выбранные (%1$d)</string>
+    <string name="extra_features_filter_user">Сторонние</string>
+    <string name="extra_features_filter_system">Системные</string>
 </resources>
