@@ -47,6 +47,8 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.android.settings.R
 import com.android.settingslib.spa.framework.theme.SettingsTheme
@@ -165,6 +167,44 @@ internal fun ExtraFeaturesSwitch(
             )
         },
     )
+}
+
+/** Title, optional summary and a switch; the whole row toggles. */
+@Composable
+internal fun ExtraFeaturesSwitchPreference(
+    title: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    summary: String? = null,
+) {
+    Row(
+        modifier = modifier.fillMaxWidth()
+            .toggleable(checked, role = Role.Switch, onValueChange = onCheckedChange)
+            .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f).padding(end = 16.dp)) {
+            Text(title, style = MaterialTheme.typography.titleMedium)
+            summary?.let {
+                Text(it, style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+        ExtraFeaturesSwitch(checked, onCheckedChange = null)
+    }
+}
+
+/** Highlighted on/off bar at the top of a screen. */
+@Composable
+internal fun ExtraFeaturesMainSwitch(title: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+    ExtraFeaturesCard(
+        shape = RoundedCornerShape(28.dp),
+        color = if (checked) MaterialTheme.colorScheme.primaryContainer
+            else MaterialTheme.colorScheme.surfaceBright,
+    ) {
+        ExtraFeaturesSwitchPreference(title, checked, onCheckedChange)
+    }
 }
 
 /** Search and the selected, third-party and system filters; a null [systemFilter] shows all. */
