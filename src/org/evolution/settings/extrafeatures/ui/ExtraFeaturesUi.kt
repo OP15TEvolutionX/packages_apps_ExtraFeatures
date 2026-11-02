@@ -80,6 +80,18 @@ internal fun ExtraFeaturesCard(
     }
 }
 
+/** Rounds the outer corners of a group, like preference lists in Settings. */
+internal fun listItemShape(index: Int, count: Int): Shape {
+    val outer = 24.dp
+    val inner = 4.dp
+    return RoundedCornerShape(
+        topStart = if (index == 0) outer else inner,
+        topEnd = if (index == 0) outer else inner,
+        bottomStart = if (index == count - 1) outer else inner,
+        bottomEnd = if (index == count - 1) outer else inner,
+    )
+}
+
 @Composable
 internal fun AppExplanation(text: String) {
     Text(
