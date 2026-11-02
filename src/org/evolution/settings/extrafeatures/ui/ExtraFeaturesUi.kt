@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
@@ -115,13 +116,20 @@ internal fun ExtraFeaturesSearchField(
         value = query,
         onValueChange = onQueryChange,
         singleLine = true,
-        shape = RoundedCornerShape(percent = 50),
+        shape = FilterChipDefaults.shape,
         placeholder = { Text(stringResource(R.string.extra_features_search)) },
-        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+        // Equal slots on both sides keep the icons evenly inset from the field edges.
+        leadingIcon = {
+            Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+                Icon(Icons.Default.Search, contentDescription = null)
+            }
+        },
         trailingIcon = {
             if (query.isNotEmpty()) {
-                IconButton(onClick = { onQueryChange("") }) {
-                    Icon(Icons.Default.Close, stringResource(R.string.extra_features_clear_search))
+                Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+                    IconButton(onClick = { onQueryChange("") }, modifier = Modifier.size(40.dp)) {
+                        Icon(Icons.Default.Close, stringResource(R.string.extra_features_clear_search))
+                    }
                 }
             }
         },
