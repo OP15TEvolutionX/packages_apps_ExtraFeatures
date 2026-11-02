@@ -3,10 +3,13 @@
      SPDX-License-Identifier: Apache-2.0 -->
 <resources>
     <string name="extra_features_title">Extra</string>
-    <string name="extra_features_summary">Additional system features</string>
+    <string name="extra_features_summary">Enhance system capabilities</string>
     <string name="extra_features_search">Search apps</string>
     <string name="extra_features_clear_search">Clear search</string>
     <string name="extra_features_only_selected">Selected (%1$d)</string>
     <string name="extra_features_filter_user">Third-party</string>
     <string name="extra_features_filter_system">System</string>
+    <string name="extra_features_category_network">Network</string>
+    <string name="extra_features_category_system">System</string>
+    <string name="extra_features_category_privacy">Privacy</string>
 </resources>

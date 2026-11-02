@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.FilterChip
@@ -27,7 +28,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
@@ -86,6 +90,62 @@ internal fun AppExplanation(text: String) {
     )
 }
 
+/** Pill search field with a placeholder instead of a floating label. */
+@Composable
+internal fun ExtraFeaturesSearchField(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val border = MaterialTheme.colorScheme.onSurfaceVariant
+    val container = MaterialTheme.colorScheme.surfaceContainerLowest
+    OutlinedTextField(
+        value = query,
+        onValueChange = onQueryChange,
+        singleLine = true,
+        shape = RoundedCornerShape(percent = 50),
+        placeholder = { Text(stringResource(R.string.extra_features_search)) },
+        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+        trailingIcon = {
+            if (query.isNotEmpty()) {
+                IconButton(onClick = { onQueryChange("") }) {
+                    Icon(Icons.Default.Close, stringResource(R.string.extra_features_clear_search))
+                }
+            }
+        },
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = border,
+            unfocusedBorderColor = border,
+            focusedContainerColor = container,
+            unfocusedContainerColor = container,
+        ),
+        modifier = modifier.fillMaxWidth(),
+    )
+}
+
+/** Same thumb as the Settings switch used by preference screens. */
+@Composable
+internal fun ExtraFeaturesSwitch(
+    checked: Boolean,
+    onCheckedChange: ((Boolean) -> Unit)?,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+) {
+    Switch(
+        checked = checked,
+        onCheckedChange = onCheckedChange,
+        modifier = modifier,
+        enabled = enabled,
+        thumbContent = {
+            Icon(
+                if (checked) Icons.Filled.Check else Icons.Filled.Close,
+                contentDescription = null,
+                modifier = Modifier.size(SwitchDefaults.IconSize),
+            )
+        },
+    )
+}
+
 /** Search and the selected, third-party and system filters; a null [systemFilter] shows all. */
 @Composable
 internal fun AppFilterBar(
@@ -98,21 +158,7 @@ internal fun AppFilterBar(
     onSystemFilterChange: (Boolean?) -> Unit,
 ) {
     Column {
-        OutlinedTextField(
-            value = query,
-            onValueChange = onQueryChange,
-            singleLine = true,
-            label = { Text(stringResource(R.string.extra_features_search)) },
-            leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-            trailingIcon = {
-                if (query.isNotEmpty()) {
-                    IconButton(onClick = { onQueryChange("") }) {
-                        Icon(Icons.Default.Close, stringResource(R.string.extra_features_clear_search))
-                    }
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-        )
+        ExtraFeaturesSearchField(query, onQueryChange)
         Row(
             Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 4.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
