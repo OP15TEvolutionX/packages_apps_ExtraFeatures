@@ -18,6 +18,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="com.android.settings.network.profiles.NetworkProfilesActivity" />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -32,6 +33,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.fragments.routines.RoutinesActivity" />
+        </Preference>
 
         <Preference
             android:key="extra_features_clipboard_sync"
@@ -54,6 +56,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.componentmanager.MainActivity" />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -68,6 +71,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.sensorblock.SensorBlockActivity" />
+        </Preference>
 
         <Preference
             android:key="extra_features_clipboard_access"
@@ -77,6 +81,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.clipboardaccess.ClipboardAccessActivity" />
+        </Preference>
 
         <Preference
             android:key="extra_features_hide_app_list"
@@ -86,5 +91,6 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.hideapps.HideAppsActivity" />
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
