@@ -156,6 +156,7 @@ internal fun ExtraFeaturesSwitch(
         onCheckedChange = onCheckedChange,
         modifier = modifier,
         enabled = enabled,
+        colors = SwitchDefaults.colors(checkedIconColor = MaterialTheme.colorScheme.primary),
         thumbContent = {
             Icon(
                 if (checked) Icons.Filled.Check else Icons.Filled.Close,
