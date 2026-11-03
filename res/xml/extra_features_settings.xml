@@ -103,5 +103,15 @@
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.hideapps.HideAppsActivity" />
         </Preference>
+
+        <Preference
+            android:key="extra_features_fingerprint_defender"
+            android:title="@string/fingerprint_defender_title"
+            android:summary="@string/fingerprint_defender_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="org.evolution.settings.fingerprintdefender.FingerprintDefenderActivity" />
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
