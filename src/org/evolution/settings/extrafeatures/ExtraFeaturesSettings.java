@@ -16,6 +16,7 @@ import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.Arrays;
 
@@ -47,6 +48,12 @@ public class ExtraFeaturesSettings extends DashboardFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Open with the large title, like Routines; scrolling the list folds it away.
+        AppBarLayout appBar = requireActivity().findViewById(
+                com.android.settingslib.collapsingtoolbar.R.id.app_bar);
+        if (appBar != null) {
+            appBar.setExpanded(true, false);
+        }
         // Seven taps on the title hide or show The Evolver on the homepage.
         mToolbar = requireActivity().findViewById(
                 com.android.settingslib.collapsingtoolbar.R.id.collapsing_toolbar);
