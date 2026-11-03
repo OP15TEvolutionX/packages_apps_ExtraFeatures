@@ -47,6 +47,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
@@ -192,6 +193,26 @@ internal fun ExtraFeaturesSwitchPreference(
             }
         }
         ExtraFeaturesSwitch(checked, onCheckedChange = null)
+    }
+}
+
+/** Title and optional summary; same padding as [ExtraFeaturesSwitchPreference]. */
+@Composable
+internal fun ExtraFeaturesPreference(
+    title: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    summary: String? = null,
+) {
+    Column(
+        modifier.fillMaxWidth().clickable(onClick = onClick)
+            .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+    ) {
+        Text(title, style = MaterialTheme.typography.titleMedium)
+        summary?.let {
+            Text(it, style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
     }
 }
 
