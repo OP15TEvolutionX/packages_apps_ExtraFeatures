@@ -42,6 +42,17 @@
             android:fragment="org.evolution.settings.clipp.ClippSettings" />
 
         <Preference
+            android:key="extra_features_smartspacer"
+            android:title="@string/extra_features_smartspacer_title"
+            android:summary="@string/extra_features_smartspacer_summary"
+            settings:controller="org.evolution.settings.extrafeatures.SmartspacerPreferenceController">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.kieronquinn.app.smartspacer"
+                android:targetClass="com.kieronquinn.app.smartspacer.ui.activities.MainActivity" />
+        </Preference>
+
+        <Preference
             android:key="extra_features_kernel_manager"
             android:title="@string/kernel_manager_title"
             android:summary="@string/kernel_manager_summary"

@@ -12,4 +12,6 @@
     <string name="extra_features_category_network">Network</string>
     <string name="extra_features_category_system">System</string>
     <string name="extra_features_category_privacy">Privacy</string>
+    <string name="extra_features_smartspacer_title" translatable="false">Smartspacer</string>
+    <string name="extra_features_smartspacer_summary">At a Glance widget with plugins</string>
 </resources>

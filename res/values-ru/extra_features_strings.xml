@@ -12,4 +12,5 @@
     <string name="extra_features_category_network">Сеть</string>
     <string name="extra_features_category_system">Система</string>
     <string name="extra_features_category_privacy">Конфиденциальность</string>
+    <string name="extra_features_smartspacer_summary">Виджет «Краткая информация» с плагинами</string>
 </resources>
