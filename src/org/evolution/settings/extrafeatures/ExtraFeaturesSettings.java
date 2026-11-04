@@ -24,11 +24,11 @@ import java.util.Arrays;
 public class ExtraFeaturesSettings extends DashboardFragment {
 
     private static final String TAG = "ExtraFeaturesSettings";
+    private static final String KEY_CATEGORY_SYSTEM = "extra_features_category_system";
     private static final int TAP_COUNT = 7;
     private static final long TAP_WINDOW_MILLIS = 3000;
 
     private final long[] mHits = new long[TAP_COUNT];
-    private View mToolbar;
 
     @Override
     protected int getPreferenceScreenResId() {
@@ -54,24 +54,14 @@ public class ExtraFeaturesSettings extends DashboardFragment {
         if (appBar != null) {
             appBar.setExpanded(true, false);
         }
-        // Seven taps on the title hide or show The Evolver on the homepage.
-        mToolbar = requireActivity().findViewById(
-                com.android.settingslib.collapsingtoolbar.R.id.collapsing_toolbar);
-        if (mToolbar != null) {
-            mToolbar.setOnClickListener(this::onTitleTap);
+        // Seven taps on the System header hide or show The Evolver on the homepage.
+        TapCategory system = findPreference(KEY_CATEGORY_SYSTEM);
+        if (system != null) {
+            system.setTapListener(this::onHeaderTap);
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        if (mToolbar != null) {
-            mToolbar.setOnClickListener(null);
-            mToolbar = null;
-        }
-        super.onDestroyView();
-    }
-
-    private void onTitleTap(View view) {
+    private void onHeaderTap(View view) {
         System.arraycopy(mHits, 1, mHits, 0, TAP_COUNT - 1);
         mHits[TAP_COUNT - 1] = SystemClock.uptimeMillis();
         if (mHits[0] == 0 || mHits[TAP_COUNT - 1] - mHits[0] > TAP_WINDOW_MILLIS) {

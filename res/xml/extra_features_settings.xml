@@ -21,7 +21,7 @@
         </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <org.evolution.settings.extrafeatures.TapCategory
         android:key="extra_features_category_system"
         android:title="@string/extra_features_category_system">
 
@@ -68,7 +68,7 @@
                 android:targetPackage="com.android.settings"
                 android:targetClass="org.evolution.settings.componentmanager.MainActivity" />
         </Preference>
-    </PreferenceCategory>
+    </org.evolution.settings.extrafeatures.TapCategory>
 
     <PreferenceCategory
         android:key="extra_features_category_privacy"

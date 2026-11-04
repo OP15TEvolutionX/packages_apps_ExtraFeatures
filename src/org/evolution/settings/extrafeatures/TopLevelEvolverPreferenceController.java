@@ -14,7 +14,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.core.BasePreferenceController;
 
-/** Shows The Evolver on the homepage unless it was hidden from the Extra screen title. */
+/** Shows The Evolver on the homepage unless it was hidden from the Extra screen's System header. */
 public class TopLevelEvolverPreferenceController extends BasePreferenceController {
 
     static final String KEY = "evolver_hidden";
