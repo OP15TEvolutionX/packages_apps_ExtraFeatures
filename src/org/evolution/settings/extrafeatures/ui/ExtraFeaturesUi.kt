@@ -51,6 +51,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.android.settings.R
 import com.android.settingslib.spa.framework.theme.SettingsTheme
 import kotlinx.coroutines.CancellationException
@@ -170,6 +173,11 @@ internal fun ExtraFeaturesSwitch(
     )
 }
 
+/** Title of a preference row as Settings draws it: 20sp in the headline font, regular weight. */
+@Composable
+internal fun preferenceTitleStyle(): TextStyle =
+    MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp, fontWeight = FontWeight.Normal)
+
 /** Title, optional summary and a switch; the whole row toggles. */
 @Composable
 internal fun ExtraFeaturesSwitchPreference(
@@ -182,11 +190,11 @@ internal fun ExtraFeaturesSwitchPreference(
     Row(
         modifier = modifier.fillMaxWidth()
             .toggleable(checked, role = Role.Switch, onValueChange = onCheckedChange)
-            .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f).padding(end = 16.dp)) {
-            Text(title, style = MaterialTheme.typography.titleMedium)
+            Text(title, style = preferenceTitleStyle())
             summary?.let {
                 Text(it, style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -206,9 +214,9 @@ internal fun ExtraFeaturesPreference(
 ) {
     Column(
         modifier.fillMaxWidth().clickable(onClick = onClick)
-            .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
     ) {
-        Text(title, style = MaterialTheme.typography.titleMedium)
+        Text(title, style = preferenceTitleStyle())
         summary?.let {
             Text(it, style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
