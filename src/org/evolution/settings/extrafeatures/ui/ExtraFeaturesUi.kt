@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -173,10 +174,17 @@ internal fun ExtraFeaturesSwitch(
     )
 }
 
-/** Title of a preference row as Settings draws it: 20sp in the headline font, regular weight. */
+/**
+ * Title of a preference row as native Settings draws it (TextAppearance.SettingsLib.TitleMedium):
+ * 16sp on a 24sp line in the medium headline font, whatever the SPA typography variant says.
+ */
 @Composable
 internal fun preferenceTitleStyle(): TextStyle =
-    MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp, fontWeight = FontWeight.Normal)
+    MaterialTheme.typography.titleMedium.copy(
+        fontSize = 16.sp, lineHeight = 24.sp, fontWeight = FontWeight.Medium)
+
+/** Native preference rows are at least 72dp tall. */
+private val PreferenceMinHeight = 72.dp
 
 /** Title, optional summary and a switch; the whole row toggles. */
 @Composable
@@ -188,7 +196,7 @@ internal fun ExtraFeaturesSwitchPreference(
     summary: String? = null,
 ) {
     Row(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth().heightIn(min = PreferenceMinHeight)
             .toggleable(checked, role = Role.Switch, onValueChange = onCheckedChange)
             .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -213,8 +221,9 @@ internal fun ExtraFeaturesPreference(
     summary: String? = null,
 ) {
     Column(
-        modifier.fillMaxWidth().clickable(onClick = onClick)
+        modifier.fillMaxWidth().heightIn(min = PreferenceMinHeight).clickable(onClick = onClick)
             .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(title, style = preferenceTitleStyle())
         summary?.let {
